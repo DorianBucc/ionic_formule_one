@@ -1,0 +1,53 @@
+<div *ngIf="formule" class="row">
+    <div class="col s12 m8 offset-m2">
+        <h2 class="header center">{{ formule.name }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="formule.picture">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ formule.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <span *ngFor="let type of formule.types" class="{{ type | formuleTypeColor }}">{{ type }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Date de création</td>
+                <td><em>{{ formule.created | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goToformulesList()">Retour</a>
+          <a (click)="goToEditformule(formule)">Editer</a>
+          <a (click)="deleteformule(formule)">Supprimer</a>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+    
+<h4 *ngIf='!formule' class="center">
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</h4> 

@@ -1,0 +1,1 @@
+Générer un dossier : ng new nom_du_dossier --minimal --style=css --no-standalone

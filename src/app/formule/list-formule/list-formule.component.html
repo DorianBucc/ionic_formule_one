@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row"> <!-- Une row affiche de base 12 éléments -->
+        <app-search-formule></app-search-formule>
+        <div *ngFor="let Formule of FormuleList" class="col m4 s6">
+            <div class="card horizontal" pkmnBorderCard (click)="goToFormule(Formule)">
+                <div class="card-image">
+                    <img [src] = "Formule.picture">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{ Formule.name }}</p>
+                        <p><small>{{ Formule.created | date:"dd/MM/yyyy" | uppercase }}</small></p> <!--permet un affichage en date, et upperCase en majuscule-->
+                        <span *ngFor="let type of Formule.types" class="{{ type | formuleTypeColor }}">
+                            {{ type }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- col -> affiche en colonne, m4 (sur écran medium) -> 12/4 -> donc 3 pokémons affichés, s6 (sur écran small) -> 12/6 -> donc 2 pokémons affichés -->
+    </div>
+</div>
+
+<a class="btn-floating btn-large waves-effect waves-light white z-depth-3" style="position: fixed; bottom: 25px; right: 25px" (click)="goToFormuleAdd()">➕</a>
