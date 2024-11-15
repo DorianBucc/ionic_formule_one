@@ -1,16 +1,31 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { EditFormuleComponent } from './formule/edit-formule/edit-formule.component';
-
-const routes: Routes = [
-  { path: "", redirectTo: 'formules', pathMatch: 'full' },
-  { path: "**", component: PageNotFoundComponent }
-// opérateur pour récupérer absolument tous les chemins, à déclarer en dernier pour éviter les problèmes, puisque le router d'angular lit les routes du haut vers le bas
-];
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TabComponent } from './tab/tab.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: TabComponent,
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'formules',
+          },
+          {
+            path: 'photos',
+            loadChildren: () => import('./photos/photos.module').then((m) => m.PhotosPageModule),
+          },
+          {
+            path: 'formules',
+            loadChildren: () => import('./list-formule/list-formule.module').then((m) => m.ListFormulePageModule),
+          }
+        ],
+      },
+    ]),
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -1,0 +1,12 @@
+<ion-content *ngIf="formule">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Editer {{ formule.name }}
+    </ion-title>
+  </ion-toolbar>
+    <ion-card *ngIf="formule" class="ion-text-center">
+      <ion-img [src]="formule.picture"></ion-img>
+    </ion-card>
+  
+    <app-formule-form [Formule]="formule"></app-formule-form>
+</ion-content>
