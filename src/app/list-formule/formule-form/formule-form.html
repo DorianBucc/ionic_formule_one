@@ -34,18 +34,17 @@
         </div>
 
         <!-- Année -->
-        <div *ngIf="isAddForm">
-          <ion-item>
-            <ion-label position="floating">Année</ion-label>
-            <ion-input type="text" id="year" required 
-                       [(ngModel)]="year" name="year"
-                       #year="ngModel" pattern="[0-9]{4}" placeholder="Exemple : 2023">
-            </ion-input>
-          </ion-item>
-          <ion-note slot="end" color="danger" *ngIf="year.invalid && !year.pristine">
-            L'année du véhicule est requise et doit être au format 4 chiffres.
-          </ion-note>
-        </div>
+        <ion-item>
+          <ion-label position="floating">Année</ion-label>
+          <ion-input type="text" id="year" required 
+                      [(ngModel)]="year" name="year"
+                      #year="ngModel" pattern="[0-9]{4}" placeholder="Exemple : 2023"
+                      (ngModelChange)="onYearChange($event)">
+          </ion-input>
+        </ion-item>
+        <ion-note slot="end" color="danger" *ngIf="year.invalid && !year.pristine">
+          L'année du véhicule est requise et doit être au format 4 chiffres.
+        </ion-note>
 
         <!-- Marques -->
         <ion-item>

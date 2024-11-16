@@ -29,12 +29,22 @@ export class FormuleFormComponent implements OnInit {
     // Vérifie si 'year' est une année valide avec 4 chiffres
     return /^[0-9]{4}$/.test(this.year);
   }
+  onYearChange(newValue: string): void {
+    this.year = newValue;
+    console.log('Année mise à jour :', this.year);
+    if(!this.isYearValid()){
+      this.year = "xxxx";
+    }
+    else{
+      this.Formule.types = [this.Formule.types[0],this.year]
+    }
+  }
 
   hasType(type: string): boolean{ // méthode permettant de savoir si le pokémon possède déjà le type sélectionné et donc cocher/décocher certains types
     return this.Formule.types.includes(type);
   }
 
-  selectType($event: Event){ // méthode pour ajouter et supprimer les types d'un pokémon
+  selectType($event: Event){
     const selectedType = ($event.target as HTMLIonRadioGroupElement).value;
     this.Formule.types = [selectedType,this.year];
   }
