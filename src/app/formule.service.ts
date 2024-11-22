@@ -7,11 +7,12 @@ import { Observable, catchError, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class FormuleService {
+  private DNS = "http://localhost:3000"
 
   private types: string[] = [""];
 
   constructor(private http: HttpClient){
-    this.http.get<string[]>(`http://localhost:3000/formule/types`).subscribe( 
+    this.http.get<string[]>(this.DNS+`/formule/types`).subscribe( 
       (response) => {this.types = response},
       (error) => {this.types = ["error"]}
     );
@@ -19,14 +20,14 @@ export class FormuleService {
   }
 
   getFormuleList(): Observable<Formule[]>{
-    return this.http.get<Formule[]>('http://localhost:3000/formule').pipe(
+    return this.http.get<Formule[]>(this.DNS+'/formule').pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     );
   }
 
   getFormuleById(FormuleId: number): Observable<Formule|undefined>{
-    return this.http.get<Formule>(`http://localhost:3000/formule/list/${FormuleId}`).pipe(
+    return this.http.get<Formule>(this.DNS+`/formule/list/${FormuleId}`).pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     );
@@ -37,7 +38,7 @@ export class FormuleService {
       return of([]);
     }
 
-    return this.http.get<Formule[]>(`http://localhost:3000/Formule/search/${term}`).pipe(
+    return this.http.get<Formule[]>(this.DNS+`/Formule/search/${term}`).pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     )
@@ -48,7 +49,7 @@ export class FormuleService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put('http://localhost:3000/Formule/push/'+Formule.id, Formule, httpOptions).pipe(
+    return this.http.put(this.DNS+'/Formule/push/'+Formule.id, Formule, httpOptions).pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     );
@@ -59,14 +60,14 @@ export class FormuleService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.post<Formule>('http://localhost:3000/Formule/add/', Formule, httpOptions).pipe(
+    return this.http.post<Formule>(this.DNS+'/Formule/add/', Formule, httpOptions).pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     );
   }
 
   deleteFormule(FormuleId: number): Observable<null>{
-    return this.http.delete(`http://localhost:3000/Formule/delete/${FormuleId}`).pipe(
+    return this.http.delete(this.DNS+`/Formule/delete/${FormuleId}`).pipe(
       // tap((response) => this.log(response)), // appel à la fonction log pour éviter la répetition de code
       catchError((error) => this.handleError(error, [])) // tap -> équivalent à un console.log mais adapter à des observables
     );

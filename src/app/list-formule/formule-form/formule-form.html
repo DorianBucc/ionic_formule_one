@@ -37,7 +37,7 @@
         <ion-item>
           <ion-label position="floating">Année</ion-label>
           <ion-input type="text" id="year" required 
-                      [(ngModel)]="year" name="year"
+                      [(ngModel)]="year.value" name="year"
                       #year="ngModel" pattern="[0-9]{4}" placeholder="Exemple : 2023"
                       (ngModelChange)="onYearChange($event)">
           </ion-input>

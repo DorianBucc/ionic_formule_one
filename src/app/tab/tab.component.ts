@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { addIcons } from 'ionicons';
-import { library, playCircle, radio, search } from 'ionicons/icons';
+import { search, camera } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab',
@@ -9,6 +9,6 @@ import { library, playCircle, radio, search } from 'ionicons/icons';
 })
 export class TabComponent {
   constructor() {
-    addIcons({ library, playCircle, radio, search });
+    addIcons({ search, camera });
   }
 }

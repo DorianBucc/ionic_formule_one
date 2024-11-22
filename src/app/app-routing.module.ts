@@ -25,6 +25,10 @@ import { TabComponent } from './tab/tab.component';
           {
             path: 'home',
             loadChildren: () => import('./home-formule/home-formule.module').then((m) => m.HomeFormulePageModule),
+          },
+          {
+            path: 'about',
+            loadChildren: () => import('./about/about.module').then((m) => m.AboutPageModule),
           }
         ],
       },
