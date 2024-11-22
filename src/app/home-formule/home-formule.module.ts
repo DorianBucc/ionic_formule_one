@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListFormulePageRoutingModule } from './list-formule-routing.module';
+import { HomeFormulePageRoutingModule } from './home-formule-routing.module';
 
-import { ListFormuleComponent } from './list-formule.page';
+import { HomeFormuleComponent } from './home-formule.page';
+import { SearchFormulePageModule } from './search-formule/search-formule.module';
 import { SharedModule } from '../share.module';
 
 @NgModule({
@@ -14,11 +15,12 @@ import { SharedModule } from '../share.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListFormulePageRoutingModule,
+    HomeFormulePageRoutingModule,
+    SearchFormulePageModule,
     SharedModule
   ],
   declarations: [
-    ListFormuleComponent,
+    HomeFormuleComponent,
   ]
 })
-export class ListFormulePageModule {}
+export class HomeFormulePageModule {}
