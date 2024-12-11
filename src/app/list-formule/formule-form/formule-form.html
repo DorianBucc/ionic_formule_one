@@ -1,4 +1,4 @@
-<ion-content>
+
   <!-- Formulaire d'ajout/édition -->
   <form *ngIf="Formule" (ngSubmit)="onSubmit()" #formuleForm="ngForm">
     <ion-card>
@@ -66,4 +66,3 @@
 
   <!-- Spinner de chargement -->
   <ion-spinner *ngIf="!Formule" name="crescent"></ion-spinner>
-</ion-content>
