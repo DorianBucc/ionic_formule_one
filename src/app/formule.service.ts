@@ -8,7 +8,7 @@ import { Observable, catchError, of, tap } from 'rxjs';
 })
 export class FormuleService {
   // private DNS = "http://localhost:3000"
-  private DNS = "https://ionic.projetu.fr"
+  private DNS = "https://service.ionic.projetu.fr"
 
   private types: string[] = [""];
 
