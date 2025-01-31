@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Formule } from './formule';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
-
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class FormuleService {
-  // private DNS = "http://localhost:3000"
-  private DNS = "https://service.ionic.projetu.fr"
+  private DNS = environment.API_URL
 
   private types: string[] = [""];
 

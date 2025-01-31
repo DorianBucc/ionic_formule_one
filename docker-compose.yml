@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: app_formule_one
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        API_URL: https://service.ionic.projetu.fr
+        #API_URL: http://localhost:13003
+    ports:
+      - "8003:80"
